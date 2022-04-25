@@ -14,8 +14,5 @@ UCLASS()
 class HTTPRECUEST_API AHttpRecuestGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-
-private:
-	void Construction(TArray<UClass*> Actors, TArray<FTransform*> Transforms, TArray<UStaticMeshComponent*> Meshes, TArray<UMaterialInterface*> Materials);
 	
 };

@@ -26,12 +26,12 @@ void UHttpRequestObject::RequestOntheServer()
 }
 void UHttpRequestObject::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
-	
 	if(bWasSuccessful)
 	{
 		TSharedPtr<FJsonObject> ResponsObject;
 		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
-		FJsonSerializer::Deserialize(Reader,ResponsObject);
+		if(!FJsonSerializer::Deserialize(Reader,ResponsObject)) return;
+		
 		TArray<TSharedPtr<FJsonValue>> ArrString = ResponsObject->GetArrayField("id");
 		for(auto a: ArrString)
 		{
